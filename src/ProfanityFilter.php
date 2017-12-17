@@ -52,11 +52,12 @@ class ProfanityFilter
 
         foreach ($jsonArray as $key => $value)
         {
-            foreach ($value as $flaggedTerm)            {
+            foreach ($value as $flaggedTerm)
+            {
 
-            if (strlen($flaggedTerm) < 1) continue;
+                if (strlen($flaggedTerm) < 1) continue;
 
-            array_push($this->blackListedWords, $flaggedTerm);
+                array_push($this->blackListedWords, $flaggedTerm);
 
             }
         }
