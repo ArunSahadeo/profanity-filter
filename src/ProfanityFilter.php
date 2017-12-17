@@ -47,11 +47,6 @@ class ProfanityFilter
 
     }
 
-    public function getParent()
-    {
-        return dirname(__DIR__);
-    }
-
     public function censorProfanities($string)
     {
         $this->getBlackList();
