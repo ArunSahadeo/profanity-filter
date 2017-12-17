@@ -44,7 +44,22 @@ class ProfanityFilter
             }
         }
 
+    }
 
+    protected function parseJSON()
+    {
+        $jsonArray = json_decode(file_get_contents($this->blackListFile), true);
+
+        foreach ($jsonArray as $key => $value)
+        {
+            foreach ($value as $flaggedTerm)            {
+
+            if (strlen($flaggedTerm) < 1) continue;
+
+            array_push($this->blackListedWords, $flaggedTerm);
+
+            }
+        }
     }
 
     public function censorProfanities($string)
