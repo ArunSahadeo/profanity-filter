@@ -3,7 +3,6 @@
 class ProfanityFilter
 {
 
-    protected $sourceExists;
     protected $blackListFile;
     protected $blackListedWords = array();
 
@@ -16,7 +15,6 @@ class ProfanityFilter
         {
             if (file_exists($projectRoot . "blacklisted-words" . $blackListExtension))
             {
-                $this->sourceExists = true;
                 $this->blackListFile = $projectRoot . "blacklisted-words" . $blackListExtension;
                 return;
             }
@@ -66,7 +64,7 @@ class ProfanityFilter
     public function censorProfanities($string)
     {
         $this->getBlackList();
-        if (!$this->sourceExists) return;
+        if (!$this->blackListFile) return;
 
         $fileExtension = explode(".", $this->blackListFile);
         
@@ -90,6 +88,7 @@ class ProfanityFilter
             {
                 return str_replace($blackListedWord, "***", $string);
             }
+            else return $string;
         }
 
     }
