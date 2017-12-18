@@ -84,7 +84,7 @@ class ProfanityFilter
 
         foreach($this->blackListedWords as $blackListedWord)
         {
-            if (stristr(strtolower($string), strtolower($blackListedWord)) !== false)
+            if (stristr($string, $blackListedWord) !== false)
             {
                 return str_replace($blackListedWord, "***", $string);
             }
