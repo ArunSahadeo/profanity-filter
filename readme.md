@@ -11,7 +11,7 @@ require "vendor/autoload.php";
 
 $profanityFilter = new ArunSahadeo\ProfanityFilter();
 
-$text = "Hello *profanity";
+$text = "Hello *profanity*";
 
 $text = $profanityFilter->censorProfanities($text);
 
