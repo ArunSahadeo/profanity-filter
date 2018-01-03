@@ -1,5 +1,8 @@
 <?php namespace ArunSahadeo;
 
+require __DIR__ . "/../vendor/autoload.php";
+use Symfony\Component\Yaml\Parser;
+
 class ProfanityFilter
 {
 
@@ -23,7 +26,16 @@ class ProfanityFilter
 
     protected function parseYAML()
     {
-        $yamlFile = yaml_parse($this->blackListFile);
+        $yamlParse = new Parser();
+        $yamlFile = $yamlParse->parse(file_get_contents($this->blackListFile));
+        foreach($yamlFile as $key => $value)
+        {
+            foreach ($value as $flaggedTerm)
+            {
+                if (strlen($flaggedTerm) < 1) continue;
+                array_push($this->blackListedWords, $flaggedTerm);
+            }
+        }
     }
 
     protected function parseCSV()

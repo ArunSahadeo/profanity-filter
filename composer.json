@@ -12,7 +12,9 @@
             "email": "arunjamessahadeo@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "symfony/yaml": "^3.4"
+    },
     "autoload": {
         "psr-4": {
             "ArunSahadeo\\": "src/"
